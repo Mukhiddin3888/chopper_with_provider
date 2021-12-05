@@ -1,9 +1,9 @@
-import 'package:chopper_with_provider/data/post_api_service.dart';
 import 'package:chopper_with_provider/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:logging/logging.dart';
 
 void main() {
+  _setupLogging();
   runApp(const MyApp());
 }
 
@@ -12,12 +12,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (_) => PostApiService.create(),
-      dispose: (_, PostApiService service) => service.client.dispose(),
-      child: MaterialApp(
-        home: HomePage(),
-      ),
+    return const MaterialApp(
+      home: HomePage(),
     );
   }
 }
+void _setupLogging() => Logger.root
+  ..level =  Level.ALL
+  ..onRecord.listen((record) => debugPrint(
+    '${record.level.name}: '
+        '${record.time} '
+        '${record.loggerName}: '
+        '${record.message}',
+  ));
