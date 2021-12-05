@@ -6,6 +6,7 @@
 
 import 'package:chopper/chopper.dart';
 import 'package:chopper_with_provider/convertor_test/built_value_converter.dart';
+import 'package:chopper_with_provider/convertor_test/model/users.dart';
 
 part 'users_api.chopper.dart';
 
@@ -13,7 +14,7 @@ part 'users_api.chopper.dart';
 abstract  class UserApiService extends ChopperService{
 
   @Get()
-  Future<Response> getUsers();
+  Future<User> getUsers();
 
 
 

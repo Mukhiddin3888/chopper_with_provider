@@ -17,9 +17,9 @@ class _$UserApiService extends UserApiService {
   final definitionType = UserApiService;
 
   @override
-  Future<Response<dynamic>> getUsers() {
+  Future<User> getUsers() {
     final $url = '/users';
     final $request = Request('GET', $url, client.baseUrl);
-    return client.send<dynamic, dynamic>($request);
+    return client.send($request);
   }
 }
